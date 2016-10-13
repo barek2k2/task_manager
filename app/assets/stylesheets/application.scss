@@ -1,0 +1,34 @@
+@import "bootstrap";
+
+body{
+  background-color: #EEE;
+}
+
+.shadow{
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+  -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0,0.5);
+  -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+}
+
+.projects ul li {
+  list-style: none;
+  border: 1px solid #DADADA;
+  padding: 8px;
+  margin: 10px 0 10px 0;
+  background-color: #ffffff;
+}
+
+.list_count, .task_count, .assignee_count {
+  font-weight: bold;
+  font-size: 15px;
+}
+.project_desc{
+  text-align: justify;
+}
+.projects ul{
+  margin: 0;
+  padding: 0;
+}
+.projects h3{
+  margin-top: 0;
+}
