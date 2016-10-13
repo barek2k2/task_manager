@@ -1,18 +1,5 @@
 <div class="row">
   <div class="projects col-md-12">
-    <h1>Welcome to Task Manager</h1>
-    <button class="btn btn-primary">New Project</button>
-    <ul>
-      <% 3.times do |i| %>
-        <li class="shadow">
-          <h3>Project <%= i+1 %></h3>
-          <p class="project_desc">lorem ipsum dolor sit lorem ipsum dolor sit lorem ipsum dolor sit </p>
-          <div class="list_count">3 Lists</div>
-          <div class="task_count">60 Tasks</div>
-          <div class="assignee_count">10 Assignees</div>
-          <button class="btn btn-danger">Delete</button>
-        </li>
-      <% end %>
-    </ul>
+    <%= react_component('Projects', {projects: @projects}, {prerender: true}) %>
   </div>
-  </div>
+</div>
