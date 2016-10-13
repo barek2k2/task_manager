@@ -24,7 +24,7 @@ var Projects = React.createClass({
     projects = projects.length > 0 ? projects : <h4>No Project</h4>
     return (
       <div>
-        <h1>Welcome to Task Manager</h1>
+        <h1>Welcome to Task Manager ({this.state.projects.length})</h1>
           <NewProject handleCreated={this.handleCreated} />
           <ul>
           {projects}
