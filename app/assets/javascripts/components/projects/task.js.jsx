@@ -9,6 +9,10 @@ var Task = React.createClass({
   },
 
   handleTitleChange(e){
+    if(e.charCode != undefined && e.charCode == 13 && !e.shiftKey){
+      this.handleTitleChanged();
+      return;
+    }
     newTask = this.state.task
     newTask.title = e.target.value
     this.setState({
@@ -17,6 +21,10 @@ var Task = React.createClass({
   },
 
   handleDescriptionChange(e){
+    if(e.charCode != undefined && e.charCode == 13 && !e.shiftKey){
+      this.handleDescriptionChanged();
+      return;
+    }
     newTask = this.state.task
     newTask.description = e.target.value
     this.setState({
@@ -36,7 +44,7 @@ var Task = React.createClass({
   var that = this;
     that.setState({titleEditable: false});
     $.ajax({
-      url: "/tasks/" + that.state.task.id,
+      url: "/projects/" + that.props.project.slug + "/tasks/" + that.state.task.id,
       method: 'PUT',
       data: {task: {title: that.state.task.title }},
       error: function(res){
@@ -49,7 +57,7 @@ var Task = React.createClass({
   var that = this;
     that.setState({descriptionEditable: false});
     $.ajax({
-      url: "/tasks/" + that.state.task.id,
+      url: "/projects/" + that.props.project.slug + "/tasks/" + that.state.task.id,
       method: 'PUT',
       data: {task: {description: that.state.task.description }},
       error: function(res){
@@ -74,14 +82,14 @@ var Task = React.createClass({
   render: function() {
     var title;
     if(this.state.titleEditable){
-      title = <input type="text" className="full" value={this.state.task.title} onChange={this.handleTitleChange} onBlur={this.handleTitleChanged} />
+      title = <input type="text" className="full" value={this.state.task.title} onKeyPress={this.handleTitleChange} onChange={this.handleTitleChange} onBlur={this.handleTitleChanged} />
     }
     else{
       title = this.state.task.title
     }
     var description;
     if(this.state.descriptionEditable){
-      description = <textarea type="text" className="full" value={this.state.task.description} onChange={this.handleDescriptionChange} onBlur={this.handleDescriptionChanged} />
+      description = <textarea type="text" className="full" value={this.state.task.description} onKeyPress={this.handleDescriptionChange} onChange={this.handleDescriptionChange} onBlur={this.handleDescriptionChanged} />
     }
     else{
       description = this.state.task.description
