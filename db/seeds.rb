@@ -8,5 +8,8 @@
 
 5.times do |i|
   p = Project.create(title: Faker::Name.title, description: Faker::Hipster.paragraph)
+  3.times do |j|
+    t = p.tasks.create(title: Faker::Name.title, description: Faker::Hipster.paragraph)
+  end
   puts "Project: #{p.title} created"
 end

@@ -11,7 +11,7 @@ var Projects = React.createClass({
     this.setState({projects: projects})
   },
   handleCreated(project){
-    newProject = {id: project.id, title: project.title, description: project.description};
+    newProject = {id: project.id, title: project.title, description: project.description, url: project.url};
     projects = this.state.projects;
     projects.push(newProject);
     this.setState({projects: projects});
