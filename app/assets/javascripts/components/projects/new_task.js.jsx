@@ -2,7 +2,7 @@ var NewTask = React.createClass({
   getInitialState(){
     return({
       project: this.props.project,
-      task: {title: '', description: ''},
+      task: {title: '', description: ''}
     })
   },
 
@@ -50,13 +50,13 @@ var NewTask = React.createClass({
                   <div className="form-group">
                     <label htmlFor="inputEmail3" className="col-sm-2 control-label">Title</label>
                     <div className="col-sm-10">
-                      <input type="text" className="form-control" value={this.state.task.title} id="inputEmail3" placeholder="Title" onChange={this.handleTitleChange} />
+                      <input type="text" className="form-control" value={this.state.task.title || ''}  id="inputEmail3" placeholder="Title" onChange={this.handleTitleChange} />
                     </div>
                   </div>
                  <div className="form-group">
                    <label htmlFor="inputEmail3" className="col-sm-2 control-label">Description</label>
                    <div className="col-sm-10">
-                     <textarea className="form-control" value={this.state.task.description} id="inputEmail3" rows="5" placeholder="Description" onChange={this.handleDescriptionChange} />
+                     <textarea className="form-control" id="inputEmail3" value={this.state.task.description || ''} rows="5" placeholder="Description" onChange={this.handleDescriptionChange} />
                    </div>
                  </div>
 

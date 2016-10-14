@@ -13,6 +13,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.json do
         if @task.save
+          #ActionCable.server.broadcast 'activity_channel', :task => @task
           render :json => @task
         else
           render :json => { :errors => @task.errors.messages }, :status => 422

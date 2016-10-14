@@ -79,7 +79,17 @@ var Task = React.createClass({
       }
     })
   },
+  handleDeleteUser(deletedUser){
+    task = this.state.task
+    var users = task.users.filter(function(user){
+      return user.id != deletedUser.id
+    });
+    task.users = users;
+    this.setState({task: task});
+
+  },
   render: function() {
+    var that = this;
     var title;
     if(this.state.titleEditable){
       title = <input type="text" className="full" value={this.state.task.title} onKeyPress={this.handleTitleChange} onChange={this.handleTitleChange} onBlur={this.handleTitleChanged} />
@@ -95,11 +105,16 @@ var Task = React.createClass({
       description = this.state.task.description
     }
 
+    users = this.state.task.users.map(function(user){
+      return(<UserTask key={user.id} user={user} handleDeleteUser={that.handleDeleteUser} />)
+    })
+
     return (
       <li className="shadow">
         <h3 onClick={this.showEditableTitle}>{title}</h3>
         <p className="task_desc" onClick={this.showEditableDescription}>{description}</p>
-        <div className="assignee_count">10 Assignees</div>
+        <div className="assignee_count">{this.state.task.users.length} Assignees</div>
+        <div className="row users_task">{users}</div>
         <a className="btn btn-primary" href={this.state.task.url}>Show</a>
         <button className="btn btn-danger" onClick={this.handleDelete}>Delete</button>
       </li>

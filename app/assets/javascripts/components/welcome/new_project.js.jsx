@@ -49,13 +49,13 @@ var NewProject = React.createClass({
                   <div className="form-group">
                     <label htmlFor="inputEmail3" className="col-sm-2 control-label">Title</label>
                     <div className="col-sm-10">
-                      <input type="text" className="form-control" value={this.state.project.title} id="inputEmail3" placeholder="Title" onChange={this.handleTitleChange} />
+                      <input type="text" className="form-control" value={this.state.project.title || ''} id="inputEmail3" placeholder="Title" onChange={this.handleTitleChange} />
                     </div>
                   </div>
                  <div className="form-group">
                    <label htmlFor="inputEmail3" className="col-sm-2 control-label">Description</label>
                    <div className="col-sm-10">
-                     <textarea className="form-control" value={this.state.project.description} id="inputEmail3" rows="5" placeholder="Description" onChange={this.handleDescriptionChange} />
+                     <textarea className="form-control" value={this.state.project.description || ''} id="inputEmail3" rows="5" placeholder="Description" onChange={this.handleDescriptionChange} />
                    </div>
                  </div>
 
