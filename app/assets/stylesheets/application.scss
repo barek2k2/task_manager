@@ -10,7 +10,7 @@ body{
   -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
 }
 
-.projects ul li {
+.projects ul li.list {
   list-style: none;
   border: 1px solid #DADADA;
   padding: 8px;
@@ -42,4 +42,11 @@ body{
   margin: 8px 0 8px 8px;
   width: 230px;
   font-weight: bold;
+}
+a.delete_assignee{
+  cursor: pointer;
+}
+.dropdown-menu li.assignee{
+  border-bottom: 1px solid #DADADA;
+  padding: 4px;
 }

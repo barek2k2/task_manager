@@ -87,7 +87,7 @@ var Project = React.createClass({
     }
 
     return (
-      <li className="shadow">
+      <li className="shadow list">
         <h3 onClick={this.showEditableTitle}>{title}</h3>
         <p className="project_desc" onClick={this.showEditableDescription}>{description}</p>
         <div className="task_count">60 Tasks</div>

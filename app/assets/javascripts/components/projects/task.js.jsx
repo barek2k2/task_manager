@@ -120,12 +120,12 @@ var Task = React.createClass({
     })
 
     return (
-      <li className="shadow">
+      <li className="shadow list">
         <h3 onClick={this.showEditableTitle}>{title}</h3>
         <p className="task_desc" onClick={this.showEditableDescription}>{description}</p>
         <div className="assignee_count">{this.state.task.users.length} Assignees</div>
-        <div className="row users_task">{users}</div>
         <AssigneeDropdown handleAssignee={this.handleAssignee}  assignees={this.state.assignees} />
+        <div className="row users_task">{users}</div>
         <a className="btn btn-primary" href={this.state.task.url}>Show</a>
         <button className="btn btn-danger" onClick={this.handleDelete}>Delete</button>
       </li>

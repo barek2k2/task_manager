@@ -12,7 +12,7 @@ var Assignee = React.createClass({
     var that = this;
     assignee = that.state.assignee
     return (
-      <li key={assignee.id} onClick={that.assign}>
+      <li className="assignee" key={assignee.id} onClick={that.assign}>
         <a href="javascript: void(0)">{assignee.email}</a>
       </li>
     );
