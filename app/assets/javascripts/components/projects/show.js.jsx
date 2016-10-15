@@ -3,7 +3,8 @@ var ProjectShow = React.createClass({
     return({
       project: this.props.project,
       titleEditable: false,
-      descriptionEditable: false
+      descriptionEditable: false,
+      assignees: this.props.assignees
     })
   },
 
@@ -99,7 +100,7 @@ var ProjectShow = React.createClass({
     }
 
     tasks = that.state.project.tasks.map(function(task){
-      return(<Task key={task.id} project={that.props.project} task={task} handleDelete={that.handleDelete} />)
+      return(<Task key={task.id} project={that.props.project} task={task} assignees={that.state.assignees} handleDelete={that.handleDelete} />)
     })
 
     return (

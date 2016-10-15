@@ -1,5 +1,5 @@
 <div class="row">
   <div class="projects col-md-12">
-    <%= react_component('ProjectShow', {project: @project, task: @project.tasks}, {prerender: false}) %>
+    <%= react_component('ProjectShow', {project: @project, task: @project.tasks, assignees: User.order(email: :asc) }, {prerender: false}) %>
   </div>
 </div>

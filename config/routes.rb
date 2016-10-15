@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :projects do
     resources :tasks
   end
+  resources :users, only: [:index]
   mount ActionCable.server => '/cable'
 end

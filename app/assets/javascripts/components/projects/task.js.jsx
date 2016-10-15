@@ -1,10 +1,13 @@
 var Task = React.createClass({
   getInitialState(){
+    task = this.props.task
+    task.users = task.users || []
     return({
-      task: this.props.task,
+      task: task,
       project: this.props.project,
       titleEditable: false,
-      descriptionEditable: false
+      descriptionEditable: false,
+      assignees: this.props.assignees
     })
   },
 
@@ -88,6 +91,13 @@ var Task = React.createClass({
     this.setState({task: task});
 
   },
+  handleAssignee(assignee){
+    var task = this.state.task
+    if(!task.users.hasObjectExists(assignee)){
+      task.users.push(assignee)
+    }
+    this.setState({task: task})
+  },
   render: function() {
     var that = this;
     var title;
@@ -115,6 +125,7 @@ var Task = React.createClass({
         <p className="task_desc" onClick={this.showEditableDescription}>{description}</p>
         <div className="assignee_count">{this.state.task.users.length} Assignees</div>
         <div className="row users_task">{users}</div>
+        <AssigneeDropdown handleAssignee={this.handleAssignee}  assignees={this.state.assignees} />
         <a className="btn btn-primary" href={this.state.task.url}>Show</a>
         <button className="btn btn-danger" onClick={this.handleDelete}>Delete</button>
       </li>

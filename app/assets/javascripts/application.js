@@ -7,3 +7,12 @@
 //= require components
 //= require cable
 //= require_tree .
+
+Array.prototype.hasObjectExists = function(item) {
+    for (i = 0; i < this.length; i++) {
+        if(this[i].id == item.id){
+            return true;
+        }
+    }
+    return false;
+};
