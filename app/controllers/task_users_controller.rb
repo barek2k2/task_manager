@@ -1,5 +1,6 @@
 class TaskUsersController < ApplicationController
   before_action :load_task
+
   def create
     @task_user = @task.task_users.new(task_user_params)
     respond_to do |format|

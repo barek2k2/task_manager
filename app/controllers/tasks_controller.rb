@@ -2,6 +2,15 @@ class TasksController < ApplicationController
   before_action :find_project
   def index
     @tasks = @project.tasks
+
+    filter = params[:filter].to_s.downcase
+    @tasks = @tasks.send(filter.to_sym) if filter.present? && Task.statuses.keys.include?(filter)
+    respond_to do |format|
+      format.html
+      format.json do
+        render :json => @tasks
+      end
+    end
   end
 
   def show
@@ -39,7 +48,7 @@ class TasksController < ApplicationController
     @task = @project.tasks.find(params[:task_id])
     respond_to do |format|
       format.json do
-        if @task.send("#{params[:status]}!".downcase)
+        if @task.send("#{params[:status].downcase}!")
           render :json => @task
         else
           render :json => { :errors => @task.errors.messages }, :status => 422

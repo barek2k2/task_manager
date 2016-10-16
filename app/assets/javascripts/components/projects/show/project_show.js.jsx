@@ -83,6 +83,19 @@ var ProjectShow = React.createClass({
     this.setState({project: project});
   },
 
+  handleFilter(e){
+    var status = e.target.text.toLowerCase();
+    var that = this;
+    $.ajax({
+      url: "/projects/"+that.state.project.slug+"/tasks.json?filter="+status,
+      success: function(res){
+        var project = that.state.project
+        project.tasks = res
+        that.setState({project: project})
+      }
+    });
+  },
+
   render: function() {
     var that = this;
     var title;
@@ -104,6 +117,14 @@ var ProjectShow = React.createClass({
       return(<Task key={task.id} project={that.props.project} task={task} assignees={that.state.assignees} statuses={that.state.statuses} handleDelete={that.handleDelete} />)
     })
 
+    statuses = that.state.statuses.map(function(status){
+      return(
+        <li className="status" key={status}>
+          <a onClick={that.handleFilter}>{status.toUpperCase()}</a>
+        </li>
+      );
+    })
+
     return (
       <div>
         <div className="row">
@@ -113,7 +134,20 @@ var ProjectShow = React.createClass({
           <div className="col-md-12" onClick={this.showEditableDescription}>
             {description}
           </div>
-          <h3>{that.state.project.tasks.length} Tasks</h3>
+          <div className="row">
+            <div className="col-md-6">
+              <h3>{that.state.project.tasks.length} Tasks</h3>
+            </div>
+            <div className="col-md-6">
+              <div className="dropdown pull-right">
+                <a href="#" data-toggle="dropdown" className="dropdown-toggle">FILTER <b className="caret"></b></a>
+                <ul className="dropdown-menu">
+                  {statuses}
+                </ul>
+              </div>
+            </div>
+          </div>
+
           <NewTask project={that.state.project} handleCreated={that.handleCreated} />
         </div>
         <div className="row">
