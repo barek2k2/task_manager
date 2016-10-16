@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
+  enum status: [ :todo, :doing, :done ]
   belongs_to :project
 
   has_many :task_users, dependent: :destroy

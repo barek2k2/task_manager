@@ -2,6 +2,7 @@ var AssigneeDropdown = React.createClass({
   getInitialState(){
     return({
       assignees: this.props.assignees,
+      task: this.props.task
     })
   },
 
@@ -9,7 +10,7 @@ var AssigneeDropdown = React.createClass({
     var that = this;
     assignees = that.state.assignees.map(function(assignee){
       return(
-        <Assignee key={assignee.id} assignee={assignee} handleAssignee={that.props.handleAssignee} />
+        <Assignee task={that.state.task} key={assignee.id} assignee={assignee} handleAssignee={that.props.handleAssignee} />
       )
     })
     return (

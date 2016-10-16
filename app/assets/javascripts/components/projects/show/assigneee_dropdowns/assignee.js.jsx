@@ -2,11 +2,23 @@ var Assignee = React.createClass({
   getInitialState(){
     return({
       assignee: this.props.assignee,
+      task: this.props.task
     })
   },
 
   assign(){
-    this.props.handleAssignee(this.state.assignee)
+    var that = this;
+    $.ajax({
+      url: "/task_users",
+      method: 'POST',
+      data: {task_user: {task_id: that.state.task.id, user_id: that.state.assignee.id}} ,
+      success: function(res){
+        that.props.handleAssignee(that.state.assignee)
+      },
+      error: function(res){
+        console.log(res);
+      }
+    });
   },
   render: function() {
     var that = this;

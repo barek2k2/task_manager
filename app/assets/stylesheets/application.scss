@@ -35,7 +35,9 @@ body{
 .full{
   width: 100%;
 }
-
+.users_task{
+  padding: 8px;
+}
 .users_task .user_task{
   border: 1px solid #DADADA;
   padding: 8px;
@@ -43,10 +45,10 @@ body{
   width: 230px;
   font-weight: bold;
 }
-a.delete_assignee{
+a.delete_assignee, .dropdown-menu li.status a{
   cursor: pointer;
 }
-.dropdown-menu li.assignee{
+.dropdown-menu li.assignee, .dropdown-menu li.status{
   border-bottom: 1px solid #DADADA;
   padding: 4px;
 }

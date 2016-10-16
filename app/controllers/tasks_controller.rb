@@ -35,6 +35,19 @@ class TasksController < ApplicationController
     end
   end
 
+  def assign_status
+    @task = @project.tasks.find(params[:task_id])
+    respond_to do |format|
+      format.json do
+        if @task.send("#{params[:status]}!".downcase)
+          render :json => @task
+        else
+          render :json => { :errors => @task.errors.messages }, :status => 422
+        end
+      end
+    end
+  end
+
   def destroy
     @project.tasks.find(params[:id]).destroy
     respond_to do |format|

@@ -7,7 +7,8 @@ var Task = React.createClass({
       project: this.props.project,
       titleEditable: false,
       descriptionEditable: false,
-      assignees: this.props.assignees
+      assignees: this.props.assignees,
+      statuses: this.props.statuses
     })
   },
 
@@ -116,7 +117,7 @@ var Task = React.createClass({
     }
 
     users = this.state.task.users.map(function(user){
-      return(<UserTask key={user.id} user={user} handleDeleteUser={that.handleDeleteUser} />)
+      return(<UserTask key={user.id} task={that.state.task} user={user} handleDeleteUser={that.handleDeleteUser} />)
     })
 
     return (
@@ -124,9 +125,9 @@ var Task = React.createClass({
         <h3 onClick={this.showEditableTitle}>{title}</h3>
         <p className="task_desc" onClick={this.showEditableDescription}>{description}</p>
         <div className="assignee_count">{this.state.task.users.length} Assignees</div>
-        <AssigneeDropdown handleAssignee={this.handleAssignee}  assignees={this.state.assignees} />
+        <AssigneeDropdown task={this.state.task} handleAssignee={this.handleAssignee}  assignees={this.state.assignees} />
         <div className="row users_task">{users}</div>
-        <a className="btn btn-primary" href={this.state.task.url}>Show</a>
+        <AssignStatus task={this.state.task} statuses={that.state.statuses} />
         <button className="btn btn-danger" onClick={this.handleDelete}>Delete</button>
       </li>
     );
