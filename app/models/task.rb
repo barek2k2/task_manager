@@ -10,6 +10,6 @@ class Task < ApplicationRecord
 
 
   def as_json(options={})
-    super(:methods => [:users])
+    super(:methods => [:users, :labels])
   end
 end

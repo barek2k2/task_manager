@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :find_project
+
   def index
     @tasks = @project.tasks
 
@@ -25,7 +26,7 @@ class TasksController < ApplicationController
           #ActionCable.server.broadcast 'activity_channel', :task => @task
           render :json => @task
         else
-          render :json => { :errors => @task.errors.messages }, :status => 422
+          render :json => {:errors => @task.errors.messages}, :status => 422
         end
       end
     end
@@ -38,7 +39,7 @@ class TasksController < ApplicationController
         if @task.update(task_params)
           render :json => @task
         else
-          render :json => { :errors => @task.errors.messages }, :status => 422
+          render :json => {:errors => @task.errors.messages}, :status => 422
         end
       end
     end
@@ -51,9 +52,24 @@ class TasksController < ApplicationController
         if @task.send("#{params[:status].downcase}!")
           render :json => @task
         else
-          render :json => { :errors => @task.errors.messages }, :status => 422
+          render :json => {:errors => @task.errors.messages}, :status => 422
         end
       end
+    end
+  end
+
+  def add_label
+    task = Task.find(params[:task_id])
+    label = Label.find(params[:label_id])
+    begin
+      task.labels << label
+      respond_to do |format|
+        format.json do
+          render :json => task
+        end
+      end
+    rescue Exception => e
+      render :json => {:errors => task.errors.messages}, :status => 422
     end
   end
 
@@ -68,6 +84,7 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:title, :description)
   end
+
   def find_project
     @project = Project.friendly.find(params[:project_id])
   end

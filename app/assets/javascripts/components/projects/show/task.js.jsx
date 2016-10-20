@@ -2,13 +2,15 @@ var Task = React.createClass({
   getInitialState(){
     task = this.props.task
     task.users = task.users || []
+    task.labels = task.labels || []
     return({
       task: task,
       project: this.props.project,
       titleEditable: false,
       descriptionEditable: false,
       assignees: this.props.assignees,
-      statuses: this.props.statuses
+      statuses: this.props.statuses,
+      labels: this.props.labels
     })
   },
 
@@ -99,6 +101,16 @@ var Task = React.createClass({
     }
     this.setState({task: task})
   },
+  handleDeleteLabel(res){
+    var task = this.state.task
+    task.labels = res
+    this.setState({task: task})
+  },
+  labelCreated(res){
+    var task = this.state.task
+    task.labels = res
+    this.setState({task: task})
+  },
   render: function() {
     var that = this;
     var title;
@@ -120,6 +132,10 @@ var Task = React.createClass({
       return(<UserTask key={user.id} task={that.state.task} user={user} handleDeleteUser={that.handleDeleteUser} />)
     })
 
+    labels = that.state.task.labels.map(function(label){
+      return(<Label key={label.id} task={that.state.task} label={label} handleDeleteLabel={that.handleDeleteLabel} />)
+    })
+
     return (
       <li className="shadow list">
         <h3 onClick={this.showEditableTitle}>{title}</h3>
@@ -128,6 +144,9 @@ var Task = React.createClass({
         <AssigneeDropdown task={this.state.task} handleAssignee={this.handleAssignee}  assignees={this.state.assignees} />
         <div className="row users_task">{users}</div>
         <AssignStatus task={this.state.task} statuses={that.state.statuses} />
+
+        <LabelDropdown task={that.state.task} labels={that.state.labels} project={this.state.project} labelCreated={this.labelCreated} />
+        <div className="row users_task">{labels}</div>
         <button className="btn btn-danger" onClick={this.handleDelete}>Delete</button>
       </li>
     );

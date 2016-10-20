@@ -5,7 +5,8 @@ var ProjectShow = React.createClass({
       titleEditable: false,
       descriptionEditable: false,
       assignees: this.props.assignees,
-      statuses: this.props.statuses
+      statuses: this.props.statuses,
+      labels: this.props.labels
     })
   },
 
@@ -114,7 +115,7 @@ var ProjectShow = React.createClass({
     }
 
     tasks = that.state.project.tasks.map(function(task){
-      return(<Task key={task.id} project={that.props.project} task={task} assignees={that.state.assignees} statuses={that.state.statuses} handleDelete={that.handleDelete} />)
+      return(<Task key={task.id} project={that.props.project} task={task} assignees={that.state.assignees} statuses={that.state.statuses} labels={that.state.labels} handleDelete={that.handleDelete} />)
     })
 
     statuses = that.state.statuses.map(function(status){

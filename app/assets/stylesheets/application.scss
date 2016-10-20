@@ -38,17 +38,17 @@ body{
 .users_task{
   padding: 8px;
 }
-.users_task .user_task{
+.users_task .user_task, .users_task .label_task{
   border: 1px solid #DADADA;
   padding: 8px;
   margin: 8px 0 8px 8px;
   width: 230px;
   font-weight: bold;
 }
-a.delete_assignee, .dropdown-menu li.status a{
+a.delete_assignee, .dropdown-menu li.status a, .dropdown-menu li.label_ a, .label_task a.delete_label{
   cursor: pointer;
 }
-.dropdown-menu li.assignee, .dropdown-menu li.status{
+.dropdown-menu li.assignee, .dropdown-menu li.status , .dropdown-menu li.label_{
   border-bottom: 1px solid #DADADA;
   padding: 4px;
 }

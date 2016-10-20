@@ -5,9 +5,12 @@ Rails.application.routes.draw do
   resources :projects do
     resources :tasks do
       put :assign_status
+      put :add_label
     end
   end
   resources :users, only: [:index]
   resources :task_users
+  resources :label_tasks
+  resources :labels
   mount ActionCable.server => '/cable'
 end
