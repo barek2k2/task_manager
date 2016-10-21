@@ -24,7 +24,7 @@ var Comment = React.createClass({
   render: function() {
     var that = this;
     return (
-      <li>
+      <li className="comment">
         {that.state.comment.content}
         <a className="pull-right delete_label" onClick={that.deleteComment}>X</a>
       </li>

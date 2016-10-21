@@ -52,3 +52,18 @@ a.delete_assignee, .dropdown-menu li.status a, .dropdown-menu li.label_ a, .labe
   border-bottom: 1px solid #DADADA;
   padding: 4px;
 }
+
+ul li.comment {
+  list-style: none;
+  background-color: #EFEFEF;
+  padding: 5px;
+  margin-bottom: 3px;
+}
+
+ul li.comment a.delete_label{
+  cursor: pointer;
+}
+
+.comment-box {
+  margin-top: 8px;
+}

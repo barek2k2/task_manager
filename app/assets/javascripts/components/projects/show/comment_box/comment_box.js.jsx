@@ -49,11 +49,12 @@ var CommentBox = React.createClass({
     comments = that.state.task.comments.map(function(comment){
       return(<Comment key={comment.id} task={that.state.task} comment={comment} handleDeleteComment={that.handleDeleteComment} />)
     });
-    comments = comments.length == 0 ? <li>No Comment</li> : comments
+    var s = comments.length > 1 ? 's' : ''
+    commentCount = <li className="comment">{comments.length} Comment{s}</li>
 
     return (
       <div className="col-md-6" >
-        <button type="button" style={buttonStyle} className="btn btn-info btn-lg" data-toggle="modal" data-target={"#" + buttonId}>Open Modal</button>
+        <button type="button" style={buttonStyle} className="btn btn-info btn-lg" data-toggle="modal" data-target={"#" + buttonId}>Discussion</button>
         <div id={buttonId} className="modal fade" role="dialog">
           <div className="modal-dialog">
             <div className="modal-content">
@@ -62,8 +63,11 @@ var CommentBox = React.createClass({
                 <h4 className="modal-title">Discussion</h4>
               </div>
               <div className="modal-body">
-                <ul>{comments}</ul>
-                <textarea value={this.state.comment.content} className="full" placeholder="Comment" onKeyPress={that.handleContentChange} onChange={that.handleContentChange} />
+                <ul>
+                  {commentCount}
+                  {comments}
+                </ul>
+                <textarea value={this.state.comment.content} rows="4" className="comment-box full" placeholder="Comment" onKeyPress={that.handleContentChange} onChange={that.handleContentChange} />
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
