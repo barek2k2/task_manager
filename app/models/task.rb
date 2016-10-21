@@ -8,8 +8,10 @@ class Task < ApplicationRecord
   has_many :labelings
   has_many :labels, through: :labelings
 
+  has_many :comments, dependent: :destroy
+
 
   def as_json(options={})
-    super(:methods => [:users, :labels])
+    super(:methods => [:users, :labels, :comments])
   end
 end

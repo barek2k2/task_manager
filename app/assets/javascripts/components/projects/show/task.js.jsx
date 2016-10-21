@@ -147,7 +147,12 @@ var Task = React.createClass({
 
         <LabelDropdown task={that.state.task} labels={that.state.labels} project={this.state.project} labelCreated={this.labelCreated} />
         <div className="row users_task">{labels}</div>
-        <button className="btn btn-danger" onClick={this.handleDelete}>Delete</button>
+        <div className="row">
+         <div className="col-md-6">
+          <button className="btn btn-danger" onClick={this.handleDelete}>Delete</button>
+         </div>
+          <CommentBox task={that.state.task} />
+        </div>
       </li>
     );
   }

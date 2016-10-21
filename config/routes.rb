@@ -12,5 +12,8 @@ Rails.application.routes.draw do
   resources :task_users
   resources :label_tasks
   resources :labels
+  resources :tasks do
+    resources :comments
+  end
   mount ActionCable.server => '/cable'
 end
