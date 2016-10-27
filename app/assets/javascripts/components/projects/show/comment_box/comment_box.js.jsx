@@ -1,7 +1,9 @@
 var CommentBox = React.createClass({
   getInitialState(){
+    var task = this.props.task
+    task.comments = task.comments || []
     return({
-      task: this.props.task,
+      task: task,
       comment: {content: '', task_id: this.props.task}
     })
   },
@@ -50,7 +52,7 @@ var CommentBox = React.createClass({
       return(<Comment key={comment.id} task={that.state.task} comment={comment} handleDeleteComment={that.handleDeleteComment} />)
     });
     var s = comments.length > 1 ? 's' : ''
-    commentCount = <li className="comment">{comments.length} Comment{s}</li>
+    commentCount = <li className="comment"><strong>{comments.length} Comment{s}</strong></li>
 
     return (
       <div className="col-md-6" >

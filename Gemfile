@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -47,6 +46,11 @@ gem 'react-rails'
 gem 'faker'
 gem 'friendly_id', '~> 5.1.0'
 gem 'sprockets', '3.6.3'
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
 
 
 group :development, :test do

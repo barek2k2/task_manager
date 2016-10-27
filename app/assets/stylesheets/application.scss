@@ -55,7 +55,7 @@ a.delete_assignee, .dropdown-menu li.status a, .dropdown-menu li.label_ a, .labe
 
 ul li.comment {
   list-style: none;
-  background-color: #EFEFEF;
+  background-color: #F6F7f6;
   padding: 5px;
   margin-bottom: 3px;
 }
@@ -66,4 +66,9 @@ ul li.comment a.delete_label{
 
 .comment-box {
   margin-top: 8px;
+  border: 1px solid #DADADA;
+}
+.comment-box:focus{
+  border: 1px solid #DADADA;
+  outline: none;
 }
