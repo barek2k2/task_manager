@@ -111,6 +111,11 @@ var Task = React.createClass({
     task.labels = res
     this.setState({task: task})
   },
+
+  componentDidUpdate: function() {
+    resizeAllTextAreaHeight();
+  },
+
   render: function() {
     var that = this;
     var title;

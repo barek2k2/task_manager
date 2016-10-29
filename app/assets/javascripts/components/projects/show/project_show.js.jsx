@@ -38,7 +38,7 @@ var ProjectShow = React.createClass({
     this.setState({titleEditable: true});
   },
 
-  showEditableDescription(){
+  showEditableDescription(e){
     this.setState({descriptionEditable: true});
   },
 
@@ -95,6 +95,10 @@ var ProjectShow = React.createClass({
         that.setState({project: project})
       }
     });
+  },
+
+  componentDidUpdate: function() {
+    resizeAllTextAreaHeight();
   },
 
   render: function() {

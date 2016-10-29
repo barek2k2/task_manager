@@ -16,3 +16,11 @@ Array.prototype.hasObjectExists = function(item) {
     }
     return false;
 };
+
+function resizeAllTextAreaHeight(){
+    $("textarea").each(function(){
+        if($(this).is(":visible")){
+            $(this).height($(this).get(0).scrollHeight-4);
+        }
+    })
+}
