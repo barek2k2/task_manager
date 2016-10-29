@@ -8,6 +8,10 @@ var Project = React.createClass({
   },
 
   handleTitleChange(e){
+    if(e.charCode != undefined && e.charCode == 13 && !e.shiftKey){
+      this.handleTitleChanged();
+      return;
+    }
     newProject = this.state.project
     newProject.title = e.target.value
     this.setState({
@@ -16,6 +20,11 @@ var Project = React.createClass({
   },
 
   handleDescriptionChange(e){
+    if(e.charCode != undefined && e.charCode == 13 && !e.shiftKey){
+      this.handleDescriptionChanged();
+      return;
+    }
+
     newProject = this.state.project
     newProject.description = e.target.value
     this.setState({
@@ -70,17 +79,21 @@ var Project = React.createClass({
       }
     })
   },
+  componentDidUpdate: function() {
+    resizeAllTextAreaHeight();
+  },
+
   render: function() {
     var title;
     if(this.state.titleEditable){
-      title = <input type="text" className="full" value={this.state.project.title} onChange={this.handleTitleChange} onBlur={this.handleTitleChanged} />
+      title = <input type="text" className="full" value={this.state.project.title} onKeyPress={this.handleTitleChange} onChange={this.handleTitleChange} onBlur={this.handleTitleChanged} />
     }
     else{
       title = this.state.project.title
     }
     var description;
     if(this.state.descriptionEditable){
-      description = <textarea type="text" className="full" value={this.state.project.description} onChange={this.handleDescriptionChange} onBlur={this.handleDescriptionChanged} />
+      description = <textarea type="text" className="full" value={this.state.project.description} onKeyPress={this.handleDescriptionChange} onChange={this.handleDescriptionChange} onBlur={this.handleDescriptionChanged} />
     }
     else{
       description = this.state.project.description

@@ -22,7 +22,7 @@ var Projects = React.createClass({
       return(<Project key={project.id} project={project} handleDelete={that.handleDelete} />)
     })
     projects = projects.length > 0 ? projects : <h4>No Project</h4>
-    var h2Style = {marginTop: '0'}
+    var h2Style = {marginTop: '0px'}
     return (
       <div>
         <h1>Welcome to Task Manager</h1>
