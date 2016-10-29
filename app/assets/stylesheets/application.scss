@@ -72,3 +72,52 @@ ul li.comment a.delete_label{
   border: 1px solid #DADADA;
   outline: none;
 }
+
+
+/* media specific style start*/
+
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+  .users_task .user_task, .users_task .label_task {
+    width: 24% !important;
+    float: left !important;
+  }
+
+}
+
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .users_task .user_task, .users_task .label_task {
+    width: 24% !important;
+    float: left !important;
+  }
+
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+  .users_task .user_task, .users_task .label_task {
+    width: 48% !important;
+    float: left !important;
+  }
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+  .users_task .user_task, .users_task .label_task {
+    width: 48% !important;
+    float: left !important;
+  }
+
+}
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+  .users_task .user_task, .users_task .label_task {
+    width: 96% !important;
+    float: left !important;
+  }
+
+}
+
+/* media specific style end */

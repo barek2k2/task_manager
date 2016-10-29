@@ -25,7 +25,7 @@ var Label = React.createClass({
   render: function() {
     var that = this;
     return (
-      <div className="label_task col-md-1">
+      <div className="label_task">
         {this.state.label.name}
         <a className="pull-right delete_label" onClick={that.deleteLabel}>X</a>
       </div>

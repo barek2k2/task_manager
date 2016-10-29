@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  default_url_options :host => "https://task-manager-rails-react.herokuapp.com"
+  default_url_options :host => Rails.env.production? ? "https://task-manager-rails-react.herokuapp.com" : "http://localhost:3000"
   root :to => "welcome#index"
   resources :projects do
     resources :tasks do

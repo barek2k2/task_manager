@@ -138,12 +138,18 @@ var Task = React.createClass({
 
     return (
       <li className="shadow list">
-        <h3 onClick={this.showEditableTitle}>{title}</h3>
+        <div className="row">
+          <div className="col-md-6 col-xs-6">
+            <h3 onClick={this.showEditableTitle}>{title}</h3>
+          </div>
+          <div className="col-md-6 col-xs-6">
+            <AssignStatus task={this.state.task} statuses={that.state.statuses} />
+          </div>
+        </div>
         <p className="task_desc" onClick={this.showEditableDescription}>{description}</p>
         <div className="assignee_count">{this.state.task.users.length} Assignees</div>
         <AssigneeDropdown task={this.state.task} handleAssignee={this.handleAssignee}  assignees={this.state.assignees} />
         <div className="row users_task">{users}</div>
-        <AssignStatus task={this.state.task} statuses={that.state.statuses} />
 
         <LabelDropdown task={that.state.task} labels={that.state.labels} project={this.state.project} labelCreated={this.labelCreated} />
         <div className="row users_task">{labels}</div>

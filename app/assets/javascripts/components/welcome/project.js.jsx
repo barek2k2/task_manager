@@ -90,8 +90,8 @@ var Project = React.createClass({
       <li className="shadow list">
         <h3 onClick={this.showEditableTitle}>{title}</h3>
         <p className="project_desc" onClick={this.showEditableDescription}>{description}</p>
-        <div className="task_count">60 Tasks</div>
-        <div className="assignee_count">10 Assignees</div>
+        <div className="task_count">{this.state.project.tasks_count} Tasks</div>
+        <div className="assignee_count">{this.state.project.assignees_count} Assignees</div>
         <a className="btn btn-primary" href={this.state.project.url}>Show</a>
         <button className="btn btn-danger" onClick={this.handleDelete}>Delete</button>
       </li>

@@ -37,7 +37,7 @@ var AssignStatus = React.createClass({
       )
     })
     return (
-      <div className="dropdown">
+      <div className="dropdown pull-right">
         <a href="#" data-toggle="dropdown" className="dropdown-toggle">{that.state.task.status} <b className="caret"></b></a>
         <ul className="dropdown-menu">
           {statuses}
