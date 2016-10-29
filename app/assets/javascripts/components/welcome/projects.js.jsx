@@ -22,10 +22,18 @@ var Projects = React.createClass({
       return(<Project key={project.id} project={project} handleDelete={that.handleDelete} />)
     })
     projects = projects.length > 0 ? projects : <h4>No Project</h4>
+    var h2Style = {marginTop: '0'}
     return (
       <div>
-        <h1>Welcome to Task Manager ({this.state.projects.length})</h1>
-          <NewProject handleCreated={this.handleCreated} />
+        <h1>Welcome to Task Manager</h1>
+          <div className="row">
+            <div className="col-md-6 col-xs-6">
+              <NewProject handleCreated={this.handleCreated} />
+            </div>
+            <div className="col-md-6 col-xs-6">
+              <h2 style={h2Style} className="pull-right">{this.state.projects.length} Projects</h2>
+            </div>
+          </div>
           <ul>
           {projects}
           </ul>

@@ -126,20 +126,23 @@ var ProjectShow = React.createClass({
       );
     })
 
+    var paddingLeftZero = {paddingLeft: '0px'}
+    var paddingBottom = {paddingBottom: '5px'}
+
     return (
       <div>
         <div className="row">
-          <h1 className="col-md-12" onClick={this.showEditableTitle}>
+          <h1 style={paddingLeftZero} className="col-md-12" onClick={this.showEditableTitle}>
             {title}
           </h1>
-          <div className="col-md-12" onClick={this.showEditableDescription}>
+          <div style={{paddingLeft: '0px', paddingBottom: '15px'}} className="col-md-12" onClick={this.showEditableDescription}>
             {description}
           </div>
           <div className="row">
-            <div className="col-md-6">
+            <div className="col-md-6 col-xs-6">
               <h3>{that.state.project.tasks.length} Tasks</h3>
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 col-xs-6">
               <div className="dropdown pull-right">
                 <a href="#" data-toggle="dropdown" className="dropdown-toggle">FILTER <b className="caret"></b></a>
                 <ul className="dropdown-menu">

@@ -55,7 +55,7 @@ var CommentBox = React.createClass({
     commentCount = <li className="comment"><strong>{comments.length} Comment{s}</strong></li>
 
     return (
-      <div className="col-md-6" >
+      <div className="col-md-6 col-xs-6">
         <button type="button" style={buttonStyle} className="btn btn-info btn-lg" data-toggle="modal" data-target={"#" + buttonId}>Discussion</button>
         <div id={buttonId} className="modal fade" role="dialog">
           <div className="modal-dialog">

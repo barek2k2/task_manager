@@ -31,6 +31,7 @@ var NewTask = React.createClass({
       success: function(response){
         that.props.handleCreated(response)
         that.setState({task: {name: '', description: ''}})
+        $('#myModal').modal('hide');
       }
     });
   },

@@ -92,8 +92,14 @@ var Project = React.createClass({
         <p className="project_desc" onClick={this.showEditableDescription}>{description}</p>
         <div className="task_count">{this.state.project.tasks_count} Tasks</div>
         <div className="assignee_count">{this.state.project.assignees_count} Assignees</div>
-        <a className="btn btn-primary" href={this.state.project.url}>Show</a>
-        <button className="btn btn-danger" onClick={this.handleDelete}>Delete</button>
+        <div className="row top5">
+          <div className="col-md-6 col-xs-6">
+            <a className="btn btn-primary" href={this.state.project.url}>Show</a>
+          </div>
+          <div className="col-md-6 col-xs-6">
+            <button className="btn btn-danger pull-right" onClick={this.handleDelete}>Delete</button>
+          </div>
+        </div>
       </li>
     );
   }

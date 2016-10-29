@@ -139,10 +139,10 @@ var Task = React.createClass({
     return (
       <li className="shadow list">
         <div className="row">
-          <div className="col-md-6 col-xs-6">
+          <div className="col-md-10 col-xs-9">
             <h3 onClick={this.showEditableTitle}>{title}</h3>
           </div>
-          <div className="col-md-6 col-xs-6">
+          <div className="col-md-2 col-xs-3">
             <AssignStatus task={this.state.task} statuses={that.state.statuses} />
           </div>
         </div>
@@ -154,7 +154,7 @@ var Task = React.createClass({
         <LabelDropdown task={that.state.task} labels={that.state.labels} project={this.state.project} labelCreated={this.labelCreated} />
         <div className="row users_task">{labels}</div>
         <div className="row">
-         <div className="col-md-6">
+         <div className="col-md-6 col-xs-6">
           <button className="btn btn-danger" onClick={this.handleDelete}>Delete</button>
          </div>
           <CommentBox task={that.state.task} />
